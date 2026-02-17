@@ -14,6 +14,14 @@ const todolist = ref([
 ]);
 
 function AddTask() {
+  if (task.value.title === "") {
+    alert("please input something.");
+    return;
+  }
+  if (todolist.value.some((todolist) => todolist.title === task.value.title)) {
+    alert("This title is already have. Please input something else.");
+    return;
+  }
   todolist.value.push({ ...task.value });
   task.value.title = "";
 }
